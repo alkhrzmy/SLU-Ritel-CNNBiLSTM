@@ -1,0 +1,6 @@
+streamlit==1.40.1
+librosa==0.11.0
+soundfile==0.13.1
+torch==2.9.1
+st-audiorec==0.1.3
+numpy==2.2.6
