@@ -175,3 +175,4 @@ with record_tab:
         st.success("Rekaman diterima. Tekan tombol di bawah untuk menjalankan prediksi.")
         if st.button("Prediksi Rekaman", type="primary"):
             handle_inference(wav_audio, label="recording", mime="audio/wav")
+
