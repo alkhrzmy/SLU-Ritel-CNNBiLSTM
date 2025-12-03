@@ -42,9 +42,9 @@ def load_label_maps_cached(path: Path) -> LabelMaps:
 
 
 @st.cache_resource(show_spinner=False)
-def load_model_cached(model_path: str) -> torch.nn.Module:
+def load_model_cached(model_path: Path) -> torch.nn.Module:
     maps = load_label_maps_cached(LABEL_MAP_PATH)
-    model = load_model(Path(model_path), maps, device=DEVICE)
+    model = load_model(model_path, maps, device=DEVICE)
     return model.to(DEVICE)
 
 
@@ -82,7 +82,7 @@ model_choice = st.sidebar.radio("Pilih checkpoint Stage-2", choice_labels, index
 selected_model_path = available_models[model_choice]
 st.sidebar.caption(selected_model_path.as_posix())
 
-model = load_model_cached(selected_model_path.as_posix())
+model = load_model_cached(selected_model_path)
 
 
 def predict_from_features(features: AudioProcessingResult) -> dict[str, object]:
